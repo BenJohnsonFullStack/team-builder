@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-
 import './App.css';
 import Form from './Form'
 
@@ -30,7 +29,8 @@ function App() {
             setFormError("All fields are required")
         }
 
-
+        setTeamMembers([newTeamMember], ...teamMembers)
+        setFormValues(initialFormValues)
     }
     
     return(
