@@ -1,12 +1,21 @@
 import React from 'react'
 import { useState } from 'react'
 
-export default function Form() {
-    const [formValues, setFormValues] = useState({
-        name: "",
-        email: "",
-        role: "",
-    })
+export default function Form(props) {
+    const { values, update, submit } = props
+
+    
+
+    const onChange = evt => {
+        const { name } = evt.target
+        const { value } = evt.target
+        update(name, value)
+    }
+
+    const onSubmit = (evt) => {
+        evt.preventDefault()
+        submit()
+    }
 
     return (
         <div>
@@ -16,8 +25,8 @@ export default function Form() {
                         type="text"
                         name="name"
                         placeholder="Name"
-                        value={formValues.name}
-                        // onChange={change}
+                        value={values.name}
+                        onChange={onChange}
                     />
                 </label>
                 <label> Name:
@@ -25,19 +34,22 @@ export default function Form() {
                         type="text"
                         name="email"
                         placeholder="Email"
-                        value={formValues.email}
-                        // onChange={change}
+                        value={values.email}
+                        onChange={onChange}
                     />
                 </label>
                 <label htmlFor="role-select">Role:
-                    <select name="role" id="role-select">
+                    <select value={values.role} name="role" id="role-select" onChange={onChange}>
                         <option value="">----Select Your Role----</option>
                         <option value="ui-designer">UI Designer</option>
                         <option value="ux-engineer">UX Engineer</option>
                         <option value="backend-dev">Back-End Developer</option>
                         <option value="frontend-dev">Front-End Developer</option>
                     </select>
-
+                <input
+                    type="submit"
+                    value="Submit"
+                />
                 </label>
             </form>
         </div>
