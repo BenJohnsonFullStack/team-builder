@@ -25,7 +25,7 @@ function App() {
             role: formValues.role
           }
 
-        if (!teamMembers.name || !teamMembers.email || !teamMembers.role) {
+        if (!formValues.name || !formValues.email || !formValues.role) {
             setFormError("All fields are required")
         }
 
@@ -36,9 +36,10 @@ function App() {
     return(
         <div className="site-wrapper">
             <h1>Welcome to the Team!</h1>
-            { formError &&  <h2 className="error">{formError}</h2> }
+            { formError && <h2 className="error">{formError}</h2> }
             <Form 
                 values={formValues}
+                teamMembers={teamMembers}
                 update={updateForm}
                 submit={submitForm}
             />

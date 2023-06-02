@@ -2,9 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 
 export default function Form(props) {
-    const { values, update, submit } = props
-
-    
+    const { values, teamMembers, update, submit } = props
 
     const onChange = evt => {
         const { name } = evt.target
@@ -16,6 +14,8 @@ export default function Form(props) {
         evt.preventDefault()
         submit()
     }
+
+    console.log(teamMembers);
 
     return (
         <div>
@@ -29,7 +29,7 @@ export default function Form(props) {
                         onChange={onChange}
                     />
                 </label>
-                <label> Name:
+                <label> Email:
                     <input
                         type="text"
                         name="email"
@@ -52,6 +52,15 @@ export default function Form(props) {
                 />
                 </label>
             </form>
+            { teamMembers.map((idx) => {
+                return (
+                    <div className="team-member-container">
+                    <h3>{teamMembers.name}</h3>
+                    <p>{teamMembers.email}</p>
+                    <p>{teamMembers.role}</p>
+            </div>
+                )
+            })}
         </div>
     )
 }
