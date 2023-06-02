@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react'
 
 export default function Form(props) {
     const { values, teamMembers, update, submit } = props
@@ -14,8 +13,6 @@ export default function Form(props) {
         evt.preventDefault()
         submit()
     }
-
-    console.log(teamMembers);
 
     return (
         <div>
@@ -52,13 +49,14 @@ export default function Form(props) {
                 />
                 </label>
             </form>
-            { teamMembers.map((idx) => {
+            { teamMembers.map((element) => {
+                console.log(element)
                 return (
                     <div className="team-member-container">
-                    <h3>{teamMembers.name}</h3>
-                    <p>{teamMembers.email}</p>
-                    <p>{teamMembers.role}</p>
-            </div>
+                        <h3>{element.name}</h3>
+                        <p>{element.email}</p>
+                        <p>{element.role}</p>
+                    </div>
                 )
             })}
         </div>
