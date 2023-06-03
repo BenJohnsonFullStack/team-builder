@@ -29,7 +29,7 @@ function App() {
             setFormError("All fields are required")
         }
 
-        setTeamMembers([newTeamMember], ...teamMembers)
+        setTeamMembers([newTeamMember, ...teamMembers])
         setFormValues(initialFormValues)
     }
     

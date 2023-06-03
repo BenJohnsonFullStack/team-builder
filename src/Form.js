@@ -49,10 +49,10 @@ export default function Form(props) {
                 />
                 </label>
             </form>
-            { teamMembers.map((element) => {
+            { teamMembers.map((element, index) => {
                 console.log(element)
                 return (
-                    <div className="team-member-container">
+                    <div key={index} className="team-member-container">
                         <h3>{element.name}</h3>
                         <p>{element.email}</p>
                         <p>{element.role}</p>
